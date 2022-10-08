@@ -1,0 +1,2 @@
+C:\Users\a-aterytsia\source\repos\twitterClone\twitterClone\obj\Debug\twitterclone.esproj.SuggestedBindingRedirects.cache
+C:\Users\a-aterytsia\source\repos\twitterClone\twitterClone\obj\Debug\twitterclone.esproj.CoreCompileInputs.cache
