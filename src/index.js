@@ -6,35 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-//class WhoAmI extends Component {
-//    constructor(props) {
-//        super(props);
-//        this.state = {
-//            years: 26
-//        }
-       
-//    }
-
-//    nextYear = () => {
-
-//        this.setState(state => ({
-//            years: ++state.years
-//        }))
-//    }
-//    render() {
-//        const { name, surname, link } = this.props;
-//        const { years } = this.state;
-//        return(
-//            <>
-//                <button onClick={this.nextYear }>++</button>
-//                <h1>My name is {name}, surname - {surname}, years - {years }</h1>
-//                <a href={link}>My profile</a>
-//            </>
-//        )
-//    }
-//}
-//<WhoAmI name="John" surname="Smith" link="facebook.com" />
-
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

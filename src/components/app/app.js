@@ -32,7 +32,9 @@ export default class App extends Component{
         this.onToggleImportant = this.onToggleImportant.bind(this);
         this.onUpdateSearch = this.onUpdateSearch.bind(this);
         this.onFilterSelect = this.onFilterSelect.bind(this);
+        
     }
+
 
     deleteItem(id) {
         this.setState(({ data }) => {
@@ -54,13 +56,19 @@ export default class App extends Component{
             import: false,
             id: this.maxId++
         }
-        this.setState(({ data }) => {
-            const newArr = [...data, newItem];
-            return {
-                data: newArr
-            }
-        })
+        if(body.length > 0){
+            this.setState(({ data }) => {
+                const newArr = [...data, newItem];
+                return {
+                    data: newArr
+                }
+            })
+        }else{
+            
+        }
     }
+
+
     onToggleImportant(id) {
         this.setState(({ data }) => {
             const index = data.findIndex(elem => elem.id === id);
@@ -118,12 +126,30 @@ export default class App extends Component{
         console.log({ filter });
     }
 
+    onEmptyPost(visiblePosts){
+        if(visiblePosts.length === 0){
+            console.log(1);
+        }
+    }
+
     render() {
         const { data, term, filter } = this.state;
         const liked = data.filter(item => item.like).length;
         const allPosts = data.length;
-
         const visiblePosts = this.filterPost(this.searchPost(data, term), filter);
+        let workPlace = '';
+       if (visiblePosts.length > 0){
+            workPlace = <PostList
+            posts={visiblePosts}
+            onDelete={this.deleteItem}
+            onToggleImportant={this.onToggleImportant}
+            onToggleLiked={this.onToggleLiked}
+            onEmptyPost={this.onEmptyPost}
+        />
+        }else{
+            workPlace = <div>don't have news =( </div>
+        }
+        
 
         return (
 
@@ -150,12 +176,9 @@ export default class App extends Component{
                         </div>
                     </Row>
                     <Row>
-                        <PostList
-                            posts={visiblePosts}
-                            onDelete={this.deleteItem}
-                            onToggleImportant={this.onToggleImportant}
-                            onToggleLiked={this.onToggleLiked}
-                        />
+                        <div className="post-list d-flex">
+                            {workPlace}
+                        </div>
                     </Row>
                     <Row>
                         <PostAddForm
